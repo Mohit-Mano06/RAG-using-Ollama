@@ -50,4 +50,4 @@ def get_answer(user_query: str):
 
     response = llm.invoke(final_prompt)
 
-    return response.content
+    return response.content, len(docs)

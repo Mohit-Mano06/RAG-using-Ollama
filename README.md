@@ -21,10 +21,10 @@ A modular Retrieval-Augmented Generation (RAG) system built with Python, LangCha
 
 ## 📂 Project Structure
 
-* `app.py`: The main entry point. Runs an interactive terminal chat loop to query the RAG system.
-* `ingest.py`: Handles loading PDFs, chunking text, generating embeddings, and creating/saving the FAISS vector database.
-* `rag.py`: Defines the prompt template and orchestrates the final generation using the LLM and the retrieved context.
-* `retriever.py`: Responsible for loading the local FAISS vector store and configuring the retrieval mechanism.
+* `src/app.py`: The main entry point. Runs an interactive terminal chat loop to query the RAG system.
+* `src/ingest.py`: Handles loading PDFs, chunking text, generating embeddings, and creating/saving the FAISS vector database.
+* `src/rag.py`: Defines the prompt template and orchestrates the final generation using the LLM and the retrieved context.
+* `src/retriever.py`: Responsible for loading the local FAISS vector store and configuring the retrieval mechanism.
 
 ## 🚀 Getting Started
 
@@ -47,15 +47,15 @@ uv add -r requirements.txt
 ```
 
 ### 3. Ingest Documents
-Place the path to your target PDF inside `ingest.py` and run it to create the vector database:
+Place the path to your target PDF inside `src/ingest.py` and run it to create the vector database:
 ```bash
-uv run ingest.py
+uv run src/ingest.py
 ```
 This will create a `data/vector_store` directory containing the FAISS index.
 
 ### 4. Ask Questions
 Start the interactive chat interface:
 ```bash
-uv run app.py
+uv run src/app.py
 ```
 Type your query and hit enter to see the structured AI response!
