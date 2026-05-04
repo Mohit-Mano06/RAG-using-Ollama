@@ -4,4 +4,4 @@ uv.lock
 .vscode
 __pycache__
 old_main.py
-data/vector_store
+data/vector_store/
