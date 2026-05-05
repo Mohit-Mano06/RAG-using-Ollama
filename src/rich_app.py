@@ -5,6 +5,7 @@ from rich.panel import Panel
 from rich.prompt import Prompt
 from rich.logging import RichHandler
 from rich.text import Text
+from rich.live import Live
 from rag import get_answer
 
 # Setup Rich console
@@ -31,16 +32,22 @@ def main():
 
         start_time = time.perf_counter()
         
-        with console.status("[bold yellow]Thinking and querying local LLM...[/bold yellow]", spinner="dots"):
-            answer, handled_pages = get_answer(user_query)
+        with console.status("[bold yellow]Retrieving context...[/bold yellow]", spinner="dots"):
+            response_stream, handled_pages = get_answer(user_query)
             
-        latency = time.perf_counter() - start_time
+        output_text = Text("", style="white")
         
-        # Format the output beautifully
-        output_text = Text()
-        output_text.append(f"{answer}\n\n", style="white")
-        output_text.append(f"⏱️  Latency: {latency:.2f}s | 📄 Handled Pages: {handled_pages}", style="italic cyan")
-        
+        # We use transient=True so the Live display cleans itself up after it finishes
+        # This prevents terminal scrolling artifacts from breaking the box shape.
+        with Live(Panel(output_text, title="💡 Answer", border_style="blue"), console=console, refresh_per_second=8, transient=True) as live:
+            for chunk in response_stream:
+                output_text.append(chunk.content)
+                live.update(Panel(output_text, title="💡 Answer", border_style="blue"))
+                
+            latency = time.perf_counter() - start_time
+            output_text.append(f"\n\n⏱️  Latency: {latency:.2f}s | 📄 Handled Pages: {handled_pages}", style="italic cyan")
+            
+        # Print the final perfect panel once generation is complete
         console.print(Panel(output_text, title="💡 Answer", border_style="blue", padding=(1, 2)))
 
 if __name__ == "__main__":

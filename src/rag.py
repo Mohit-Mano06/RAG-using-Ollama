@@ -4,7 +4,8 @@ from retriever import load_retriever
 import os
 
 llm = ChatOllama(
-    model="llama3:8b",
+    #model="llama3:8b",
+    model = "mistral:7b",
     temperature=0.4
 )
 
@@ -48,6 +49,4 @@ def get_answer(user_query: str):
         question = user_query
     )
 
-    response = llm.invoke(final_prompt)
-
-    return response.content, len(docs)
+    return llm.stream(final_prompt), len(docs)
