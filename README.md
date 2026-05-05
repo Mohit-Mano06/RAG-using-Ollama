@@ -22,6 +22,7 @@ A modular Retrieval-Augmented Generation (RAG) system built with Python, LangCha
 ## 📂 Project Structure
 
 * `src/app.py`: The main entry point. Runs an interactive terminal chat loop to query the RAG system.
+* `src/rich_app.py`: An alternative terminal chat loop built with `rich` for an enhanced UI. Safe to delete if migrating to a web frontend.
 * `src/ingest.py`: Handles loading PDFs, chunking text, generating embeddings, and creating/saving the FAISS vector database.
 * `src/rag.py`: Defines the prompt template and orchestrates the final generation using the LLM and the retrieved context.
 * `src/retriever.py`: Responsible for loading the local FAISS vector store and configuring the retrieval mechanism.
@@ -57,5 +58,9 @@ This will create a `data/vector_store` directory containing the FAISS index.
 Start the interactive chat interface:
 ```bash
 uv run src/app.py
+```
+Or for a premium terminal UI experience with spinners and panels, run:
+```bash
+uv run src/rich_app.py
 ```
 Type your query and hit enter to see the structured AI response!
