@@ -1,13 +1,10 @@
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_ollama import ChatOllama
 from retriever import load_retriever
+from config import get_llm, LLM_PROVIDER
 import os
 
-llm = ChatOllama(
-    #model="llama3:8b",
-    model = "mistral:7b",
-    temperature=0.4
-)
+llm = get_llm(temperature=0.4)
+print(f"[rag] Using LLM provider: {LLM_PROVIDER}")
 
 prompt = ChatPromptTemplate.from_template(
     """
