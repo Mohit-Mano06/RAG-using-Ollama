@@ -1,4 +1,4 @@
-# RAG System with Ollama & LangChain
+# RAG System with OpenAI, Ollama & LangChain
 
 A modular Retrieval-Augmented Generation (RAG) system built with Python, LangChain, and Ollama. This project allows you to ingest PDF documents, store them in a local vector database, and perform structured, context-aware queries using local LLMs.
 
