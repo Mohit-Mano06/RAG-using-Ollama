@@ -6,7 +6,7 @@ A modular and robust Retrieval-Augmented Generation (RAG) system built with **La
 
 ## 🌟 Key Features
 
-*   **🔄 Dual-Provider Support**: Seamlessly switch between **OpenAI (GPT-4o)** and **Ollama (Mistral/Llama 3)** for both embeddings and text generation via a simple `.env` toggle.
+*   **🔄 Dual-Provider Support**: Seamlessly switch between **OpenAI (GPT-5-nano)** and **Ollama (Mistral/Llama 3)** for both embeddings and text generation via a simple `.env` toggle.
 *   **✨ Premium Rich UI**: Includes an enhanced terminal interface (`rich_app.py`) with:
     *   Animated spinners during retrieval.
     *   Live-streaming responses in formatted panels.
