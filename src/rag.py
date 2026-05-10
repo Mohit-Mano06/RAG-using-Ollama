@@ -33,9 +33,9 @@ prompt = ChatPromptTemplate.from_template(
     """
 )
 
+retriever = load_retriever()
 
 def get_answer(user_query: str):
-    retriever = load_retriever()
 
     docs = retriever.invoke(user_query)
 
