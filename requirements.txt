@@ -11,3 +11,5 @@ python-dotenv
 faiss-cpu
 pinecone
 rich
+fastapi
+uvicorn

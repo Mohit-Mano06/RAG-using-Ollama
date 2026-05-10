@@ -1,6 +1,6 @@
 from langchain_core.prompts import ChatPromptTemplate
-from retriever import load_retriever
-from config import get_llm, LLM_PROVIDER
+from .retriever import load_retriever
+from .config import get_llm, LLM_PROVIDER
 import os
 
 llm = get_llm(temperature=0.4)
@@ -33,9 +33,9 @@ prompt = ChatPromptTemplate.from_template(
     """
 )
 
+retriever = load_retriever()
 
 def get_answer(user_query: str):
-    retriever = load_retriever()
 
     docs = retriever.invoke(user_query)
 
@@ -46,4 +46,6 @@ def get_answer(user_query: str):
         question = user_query
     )
 
-    return llm.stream(final_prompt), len(docs)
+    response = llm.invoke(final_prompt)
+    
+    return response.content, len(docs)

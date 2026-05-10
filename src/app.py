@@ -1,5 +1,5 @@
 import time
-from rag import get_answer
+from .rag import get_answer
 
 def main():
     print("RAG System Ready")

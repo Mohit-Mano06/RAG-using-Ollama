@@ -6,7 +6,7 @@ from rich.prompt import Prompt
 from rich.logging import RichHandler
 from rich.text import Text
 from rich.live import Live
-from rag import get_answer
+from .rag import get_answer
 
 # Setup Rich console
 console = Console()

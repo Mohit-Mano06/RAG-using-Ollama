@@ -1,6 +1,6 @@
 
 from langchain_community.vectorstores import FAISS
-from config import get_embeddings, EMBEDDING_PROVIDER
+from .config import get_embeddings, EMBEDDING_PROVIDER
 
 
 def load_retriever():
